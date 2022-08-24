@@ -15,6 +15,13 @@ UserRepository userRepo;
 	
 		
 	}
+	public Iterable<User> getUser() {
+	
+		// TODO Auto-generated method stub
+		return userRepo.findAll();
+		
+	}
+	
 	
 
 }
