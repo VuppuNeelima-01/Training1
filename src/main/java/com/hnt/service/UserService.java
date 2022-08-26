@@ -10,11 +10,13 @@ import com.hnt.entity.User;
 public class UserService {
 @Autowired
 UserRepository userRepo;
-	public void save(User user) {
+public User save(User user) {
+	if (user.getName().equals("Ram"))
+		throw new IllegalArgumentException("message");
+	else
 		userRepo.save(user);
-	
-		
-	}
+	return user;
+}
 	public Iterable<User> getUser() {
 	
 		// TODO Auto-generated method stub
