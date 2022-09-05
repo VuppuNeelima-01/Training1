@@ -23,7 +23,9 @@ public User save(User user) {
 		return userRepo.findAll();
 		
 	}
-	
+	public void delete(int userid) {
+		userRepo.deleteById(userid);
+	}
 	
 
 }

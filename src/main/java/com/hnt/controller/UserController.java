@@ -13,6 +13,7 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -49,7 +50,7 @@ public class UserController {// accept requests
 		
 		MultiValueMap headers= new LinkedMultiValueMap<String,String>();
 		headers.add("headerfromserver", "sucess");
-		ResponseEntity responsEntity=new ResponseEntity(headers,HttpStatus.CREATED);
+		ResponseEntity responsEntity=new ResponseEntity(user,headers,HttpStatus.CREATED);
 		//return user.getId();
 				return responsEntity;
 	}
@@ -59,6 +60,10 @@ public class UserController {// accept requests
 		userService.save(user);
 		System.out.println("second");
 		return user.getId();
+	}
+	@DeleteMapping("/{userid}")
+	void deleteUser(@PathVariable int userid) {
+		userService.delete(userid);	
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)

@@ -6,8 +6,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
+import lombok.Data;
 
 @Entity
+@Data
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,5 +39,7 @@ public class User {
 	public void setAge(int age) {
 		this.age = age;
 	}
+	@NotEmpty
+	private String dob;
 
 }
